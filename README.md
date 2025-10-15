@@ -1,27 +1,24 @@
-# 🚀 Projects
-This repository highlights my work in data analysis and visualization. It features a collection of case studies, code examples, and analytical reports created with Python, SQL, Power BI, Excel and Looker. The aim is to demonstrate my abilities in data cleaning, exploratory analysis, statistical modeling, and effective data storytelling.
+Questo progetto rappresenta l’esercitazione finale del Modulo 4 - Looker Studio.
 
+Obiettivo del progetto
+La traccia forniva tre file Excel e chiedeva di scegliere una tematica per l’analisi. 
+Ho deciso di concentrarmi sulla disparità di genere tra i partecipanti del festival, analizzandola a livello di presentatori, vincitori e partecipanti.
 
-# 🚀 Progetti 
-Questo repository mette in evidenza il mio lavoro nell’ambito dell’analisi e della visualizzazione dei dati. Include una raccolta di casi di studio, esempi di codice e report analitici sviluppati con Python, SQL, Power BI, Excel e Looker. L’obiettivo è mostrare le mie competenze in pulizia dei dati, analisi esplorativa, modellazione statistica e data storytelling efficace.
+Pulizia e preparazione dei dati
+Come primo passo, ho aperto i file in Excel per avere una panoramica generale. Poiché mancava il dato relativo al genere degli artisti e non sono riuscita a reperirlo da altri database, 
+ho proceduto alla pulizia e normalizzazione dei dati utilizzando Power Query. In particolare, ho:
+- Rimosso duplicati e spazi vuoti;
+- Pulito e uniformato i nomi degli artisti;
+- Estratto nome e cognome di ogni artista;
+- Identificato e rimosso i gruppi quando più artisti erano elencati insieme;
+- Assegnato il genere tramite formule automatiche, e nel caso del database più complesso (quello con tutti i nomi) ho chiesto supporto a ChatGPT per completare l’attribuzione corretta del genere.
 
----
-# 🌍 **Who I am**
+Integrazione e analisi dei dati
+Dopo la pulizia, ho utilizzato MySQL per unire tutti i file in un’unica tabella centralizzata, pronta per l’analisi. 
+Infine, ho importato i dati su Looker Studio per effettuare le analisi e creare le visualizzazioni.
 
-I am a humanitarian professional with 5 years of experience in international contexts, during which I have developed strong skills in data analysis, team management, and project management. I am currently working with Climate KIC, Europe’s leading climate innovation agency.
-
-I have lived in France, Russia, South Korea, Greece, Belgium, Senegal, Uganda, Myanmar, and Ukraine.
-
-I work in English and speak French fluently.
-
-I am passionate about climbing 🧗‍♀️, trekking 🥾, and scuba diving 🤿.
-
-
-# 🌍 **Chi sono**
-Sono una professionista del settore umanitario con 5 anni di esperienza in **contesti internazionali**, durante i quali ho maturato solide competenze nell’**analisi dei dati**, nella **gestione di team** e in **project management**. Attualmente lavoro con Climate KIC, l'agenzia di innovazione climatica leader in Europa.
-
-Ho vissuto in Francia, Russia, Corea del Sud, Grecia, Belgio, Senegal, Uganda, Myanmar e Ucraina. 
-
-Lavoro in Inglese e parlo fluentemente Francese. 
-
-Sono appassionata di arrampicata 🧗‍♀️, trekking 🥾 e immersioni subacquee🤿.
+Considerazioni finali
+Questo lavoro mi ha permesso di comprendere l’importanza della pulizia e normalizzazione dei dati prima dell’analisi, nonché di sperimentare la combinazione di strumenti diversi: 
+Excel/Power Query per il preprocessing, MySQL per l’integrazione e Looker Studio per la visualizzazione e interpretazione dei risultati. 
+L’analisi finale ha evidenziato chiaramente le differenze di genere tra i partecipanti al festival, mostrando come la minor rappresentanza femminile influisca anche sulla popolarità dei loro brani 
+e sulla visibilità complessiva.
