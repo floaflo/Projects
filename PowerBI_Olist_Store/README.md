@@ -42,13 +42,11 @@ In particolare, ho:
 
 Una volta sistemati i dati, ho creato le **relazioni in Model View** e creato una tabella **Calendar**. 
 Dopodichè ho creato le principali misure DAX per analizzare le performance aziendali:
-
 - Ho calcolato i ricavi totali per visualizzare il conteggio degli ordini mese per mese, confrontando anche i ricavi con quelli dell’anno precedente utilizzando la funzione SAMEPERIODLASTYEAR, e calcolando la variazione percentuale mese per mese. Lo stesso procedimento è stato applicato anche agli ordini.
 - I ricavi sono stati calcolati con una somma personalizzata (SUMX) che include sia il prezzo di vendita sia il costo di spedizione/consegna.
 - Per il rating, ho creato una misura DAX che calcola la media dei voti per categoria, il numero totale di recensioni e divide le recensioni in positive (4-5 stelle) e negative (1-3 stelle).
 
 Ho poi costruito la dashboard finale, organizzando il report in pagine tematiche:
-
 - Overview generale
 - Vendite
 - Ricavi
