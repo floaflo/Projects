@@ -18,7 +18,7 @@ Gestione valori nulli per evitare problemi nelle misure successive.
 
 Preparazione per l’unione delle tabelle (append): Rinominazione di ResellerKey e CustomerKey in DestinationKey per uniformare le chiavi. Creazione di colonne aggiuntive per distinguere i canali di vendita (Reseller vs Internet).
 
-## 🔠 ** Task 2 – Risoluzione conflitti di formato**
+## 🔠 **Task 2 – Risoluzione conflitti di formato**
 Poichè ProductKey ha formati diversi (numero vs testo), è stata duplicata la colonna e convertita in testo solo per questa operazione, mantenendo l’originale per altre analisi.
 
 ## ✂️ **Task 3-4-5 – Pulizia e trasformazioni**
