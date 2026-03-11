@@ -6,9 +6,13 @@ Obiettivo: Creare un database relazionale progettato per gestire la catena di di
 
 ## **Tipo di Relazioni**
 Magazzino --> Negozio 1:N - Un magazzino rifornisce molti negozi
+
 Negozio --> Vendite 1: N - Un negozio può avere molte vendite
+
 Vendite --> Dettaglio Vendita 1:N - Una vendita contiene molti prodotti
+
 Prodotto <--> Magazzino M:N - Un prodotto può essere in molti magazzine (tramite GIACENZA)
+
 Vendite <--> Prodotto M:N - Una vendita può contenere molti prodotti (Traimite Dettaglio Vendita) 
 
 ## ⚙️ **Funzionalità del database**
