@@ -1,63 +1,77 @@
-create database vendicosespa;  -- QUELLO UFFICIALE
-use vendicosespa;
+-- BUILD WEEK 2
+-- Sistema gestione magazzini - VendiCose SpA
+
+--task 1 & 2
+CREATE DATABASE vendicosespa;
+USE vendicosespa;
+
+-- creo tabelle
+
 CREATE TABLE Categoria (
-CategoriaID INT AUTO_INCREMENT PRIMARY KEY,
-NomeCategoria VARCHAR (50) NOT NULL,
-Sogliarestock int);
+    CategoriaID INT AUTO_INCREMENT PRIMARY KEY,
+    NomeCategoria VARCHAR(50) NOT NULL
+);
 
 CREATE TABLE Prodotto (
-ProdottoID INT AUTO_INCREMENT PRIMARY KEY,
-NomeProdotto VARCHAR (50) NOT NULL,
-Price DECIMAL (10,2),
-CategoriaID INT,
-FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID));
+    ProdottoID INT AUTO_INCREMENT PRIMARY KEY,
+    NomeProdotto VARCHAR(50) NOT NULL,
+    Price DECIMAL(10,2),
+    CategoriaID INT,
+    FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID)
+);
 
 CREATE TABLE Magazzino (
-MagazzinoID INT AUTO_INCREMENT PRIMARY KEY,
-NomeMagazzino VARCHAR (50),
-Città VARCHAR (50),
-Indirizzo VARCHAR (100));
+    MagazzinoID INT AUTO_INCREMENT PRIMARY KEY,
+    NomeMagazzino VARCHAR(50),
+    Città VARCHAR(50),
+    Indirizzo VARCHAR(100)
+);
 
 CREATE TABLE Negozio (
-NegozioID INT AUTO_INCREMENT PRIMARY KEY,
-NomeNegozio VARCHAR (50),
-Telefono varchar(50),
-Città VARCHAR (50),
-Indirizzo VARCHAR(100),
-MagazzinoID INT,
-FOREIGN KEY (MagazzinoID) REFERENCES Magazzino(MagazzinoID));
+    NegozioID INT AUTO_INCREMENT PRIMARY KEY,
+    NomeNegozio VARCHAR(50),
+    Telefono VARCHAR(50),
+    Città VARCHAR(50),
+    Indirizzo VARCHAR(100),
+    MagazzinoID INT,
+    FOREIGN KEY (MagazzinoID) REFERENCES Magazzino(MagazzinoID)
+);
 
 CREATE TABLE Giacenza (
-ProdottoID INT,
-MagazzinoID INT,
-Quantità_magazzino INT,
-PRIMARY KEY (ProdottoID, MagazzinoID),
-FOREIGN KEY (ProdottoID) REFERENCES Prodotto(ProdottoID),
-FOREIGN KEY (MagazzinoID) REFERENCES Magazzino(MagazzinoID));
+    ProdottoID INT,
+    MagazzinoID INT,
+    Quantità_magazzino INT,
+    Sogliarestock INT,
+    PRIMARY KEY (ProdottoID, MagazzinoID),
+    FOREIGN KEY (ProdottoID) REFERENCES Prodotto(ProdottoID),
+    FOREIGN KEY (MagazzinoID) REFERENCES Magazzino(MagazzinoID)
+);
 
 CREATE TABLE Vendite (
-TransazioneID INT AUTO_INCREMENT PRIMARY KEY,
-Data_Vendita DATETIME unique,
-NegozioID INT,
-FOREIGN KEY (NegozioID) REFERENCES Negozio(NegozioID));
+    TransazioneID INT AUTO_INCREMENT PRIMARY KEY,
+    Data_Vendita DATETIME NOT NULL UNIQUE,
+    NegozioID INT,
+    FOREIGN KEY (NegozioID) REFERENCES Negozio(NegozioID)
+);
 
 CREATE TABLE Dettaglio_Vendite (
-Dettaglio_VenditeID INT AUTO_INCREMENT PRIMARY KEY,
-TransazioneID INT,
-ProdottoID INT,
-Quantità INT,
-FOREIGN KEY (TransazioneID) REFERENCES Vendite(TransazioneID),
-FOREIGN KEY (ProdottoID) REFERENCES Prodotto(ProdottoID));
+    Dettaglio_VenditeID INT AUTO_INCREMENT PRIMARY KEY,
+    TransazioneID INT,
+    ProdottoID INT,
+    Quantità INT,
+    FOREIGN KEY (TransazioneID) REFERENCES Vendite(TransazioneID),
+    FOREIGN KEY (ProdottoID) REFERENCES Prodotto(ProdottoID)
+);
 
--- Categoria
-INSERT INTO Categoria (NomeCategoria, Sogliarestock) VALUES
-('Action Figures', 50),
-('Puzzle', 30),
-('Giochi Educativi', 40),
-('Bambole', 60),
-('Costruzioni', 70);
+-- popolo tabelle con dati dummy
 
--- Prodotto
+INSERT INTO Categoria (NomeCategoria) VALUES
+('Action Figures'),
+('Puzzle'),
+('Giochi Educativi'),
+('Bambole'),
+('Costruzioni');
+
 INSERT INTO Prodotto (NomeProdotto, Price, CategoriaID) VALUES
 ('Super Robot X', 29.99, 1),
 ('Puzzle Mondo 1000 Pezzi', 14.50, 2),
@@ -69,36 +83,60 @@ INSERT INTO Prodotto (NomeProdotto, Price, CategoriaID) VALUES
 ('Action Hero Blaze', 22.50, 1),
 ('Mattoncini Creativi 500 pezzi', 44.99, 5);
 
--- Magazzino
 INSERT INTO Magazzino (NomeMagazzino, Città, Indirizzo) VALUES
 ('Magazzino Nord', 'Milano', 'Via Lombardia 45'),
 ('Magazzino Sud', 'Napoli', 'Via Vesuvio 12'),
 ('Magazzino Centro', 'Firenze', 'Via del Mercato 101');
 
--- Negozio
 INSERT INTO Negozio (NomeNegozio, Telefono, Città, Indirizzo, MagazzinoID) VALUES
 ('GiocaGiò Milano', '02-1234567', 'Milano', 'Corso Buenos Aires 33', 1),
 ('Bimbi Felici Napoli', '081-9876543', 'Napoli', 'Via Partenope 10', 2),
 ('Giochi&Cose Firenze', '055-334455', 'Firenze', 'Piazza della Libertà 88', 3);
 
--- Giacenza (quantità raddoppiate)
-INSERT INTO Giacenza (ProdottoID, MagazzinoID, Quantità_magazzino) VALUES
-(1, 1, 200),
-(2, 1, 80),
-(3, 2, 120),
-(4, 2, 40),
-(5, 3, 160),
-(6, 1, 60),
-(7, 3, 100),
-(8, 2, 180),
-(9, 3, 240);
+INSERT INTO Giacenza (ProdottoID, MagazzinoID, Quantità_magazzino, Sogliarestock) VALUES
+(1, 1, 200, 50),
+(2, 1, 80, 30),
+(3, 2, 120, 40),
+(4, 2, 40, 60),
+(5, 3, 160, 70),
+(6, 1, 60, 30),
+(7, 3, 100, 40),
+(8, 2, 180, 50),
+(9, 3, 240, 70);
+
+-- task 3 aggiornamento giacenze post vendita
+
+CREATE VIEW vendita1 AS
+SELECT 
+    n.NegozioID,
+    n.NomeNegozio,
+    n.MagazzinoID,
+    m.NomeMagazzino,
+    v.TransazioneID,
+    v.Data_Vendita,
+    d.ProdottoID,
+    d.Quantità
+FROM Negozio n
+JOIN Magazzino m 
+ON n.MagazzinoID = m.MagazzinoID
+JOIN Vendite v 
+ON n.NegozioID = v.NegozioID
+JOIN Dettaglio_Vendite d 
+ON v.TransazioneID = d.TransazioneID;
+
+-- simulazione vendita
+
+INSERT INTO Vendite (Data_Vendita, NegozioID) 
+VALUES ('2025-06-01 10:23:00', 1);
+
+INSERT INTO Dettaglio_Vendite (TransazioneID, ProdottoID, Quantità) 
+VALUES
+(1, 1, 2),
+(1, 6, 1);
 
 
+-- aggiornamento con soluzione finale
 
-
-#1) Ogni qual volta un prodotto viene venduto in un negozio, qual è la query da eseguire per aggiornare le tabelle di riferimento?
-set sql_safe_updates = 0;
-set autocommit = 0;
 UPDATE Giacenza g
 JOIN (
     SELECT 
@@ -108,42 +146,63 @@ JOIN (
     FROM Dettaglio_Vendite dv
     JOIN Vendite v ON dv.TransazioneID = v.TransazioneID
     JOIN Negozio n ON v.NegozioID = n.NegozioID
-    WHERE dv.TransazioneID = (select transazioneid from vendite order by transazioneid desc limit 1)  -- subquery
+    WHERE dv.TransazioneID = (
+        SELECT TransazioneID
+        FROM Vendite
+        WHERE Data_Vendita = (
+            SELECT MAX(Data_Vendita) FROM Vendite
+        )
+    )
 ) AS sub
-ON g.ProdottoID = sub.ProdottoID AND g.MagazzinoID = sub.MagazzinoID
+ON g.ProdottoID = sub.ProdottoID 
+AND g.MagazzinoID = sub.MagazzinoID
 SET g.Quantità_magazzino = g.Quantità_magazzino - sub.QuantitàVenduta;
-create view ID AS (SELECT 
-        dv.ProdottoID,
-        n.MagazzinoID,
-        dv.Quantità AS QuantitàVenduta
-    FROM Dettaglio_Vendite dv
-    JOIN Vendite v ON dv.TransazioneID = v.TransazioneID
-    JOIN Negozio n ON v.NegozioID = n.NegozioID
-    WHERE dv.TransazioneID = (select transazioneid from vendite order by transazioneid desc limit 1));
-UPDATE GIACENZA G
-		JOIN (SELECT * FROM ID) AS SUB
-		ON g.ProdottoID = sub.ProdottoID AND g.MagazzinoID = sub.MagazzinoID
-SET g.Quantità_magazzino = g.Quantità_magazzino - sub.QuantitàVenduta;
-   
 
-#2) Quali sono le query da eseguire per verificare quante unità di un prodotto ci sono un dato magazzino? 
-create view Anagrafica_prodotto as (select g.prodottoid, p.nomeprodotto, g.quantità_magazzino as Giacenza_prodotto, g.magazzinoid, m.nomemagazzino
-from giacenza g
-join prodotto p on g.prodottoid = p.prodottoid
-join magazzino m on g.magazzinoid = m.magazzinoid order by prodottoid asc);
+--view x rendere più leggibile
 
--- vogliamo vedere nel magazzino 2 la giacenza del prodotto con p_id 7
-select * from anagrafica_prodotto
-where magazzinoid = 2 and prodottoid = 8;
+CREATE VIEW UltimaVendita AS
+SELECT 
+    dv.ProdottoID,
+    n.MagazzinoID,
+    dv.Quantità AS QuantitàVenduta
+FROM Dettaglio_Vendite dv
+JOIN Vendite v ON dv.TransazioneID = v.TransazioneID
+JOIN Negozio n ON v.NegozioID = n.NegozioID
+WHERE v.Data_Vendita = (SELECT MAX(Data_Vendita) FROM Vendite);
 
-#3) e per monitorare le soglie di restock? 
-create view Restock as (select g.prodottoid, p.nomeprodotto, g.magazzinoid, m.nomemagazzino, g.quantità_magazzino, c.sogliarestock, IF ((g.quantità_magazzino - c.sogliarestock) > 0, 'OK', 'RIORDINO') AS Alert_Restock
-from giacenza g
-join prodotto p on g.prodottoid = p.prodottoid          
-join magazzino m on g.magazzinoid = m.magazzinoid
-join categoria c on p.categoriaid = c.categoriaid
-order by Alert_Restock desc);
-select * from restock;
+UPDATE Giacenza g
+JOIN UltimaVendita uv
+ON g.ProdottoID = uv.ProdottoID 
+AND g.MagazzinoID = uv.MagazzinoID
+SET g.Quantità_magazzino = g.Quantità_magazzino - uv.QuantitàVenduta;
 
+-- verifica giacenza prodotto
 
+SELECT
+g.ProdottoID,
+p.NomeProdotto,
+g.Quantità_magazzino AS Giacenza_prodotto,
+g.MagazzinoID,
+m.NomeMagazzino
+FROM Giacenza g
+JOIN Prodotto p ON g.ProdottoID = p.ProdottoID
+JOIN Magazzino m ON g.MagazzinoID = m.MagazzinoID
+WHERE g.MagazzinoID = 2 
+AND g.ProdottoID = 7;
 
+-- monitoraggio re-stock
+
+SELECT 
+g.ProdottoID,
+p.NomeProdotto,
+g.MagazzinoID,
+m.NomeMagazzino,
+g.Quantità_magazzino AS Giacenza_prodotto,
+g.Sogliarestock,
+IF ((g.Quantità_magazzino - g.Sogliarestock) > 0, 'OK', 'RIORDINO') AS Alert_Restock
+FROM Giacenza g
+JOIN Prodotto p ON g.ProdottoID = p.ProdottoID
+JOIN Magazzino m ON g.MagazzinoID = m.MagazzinoID
+ORDER BY Alert_Restock DESC;
+
+--fineeee
