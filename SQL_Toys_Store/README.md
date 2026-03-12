@@ -11,6 +11,7 @@
 - Transazioni di vendita che collegano prodotti e mercati geografici
 
 **🎯 Obiettivi del Progetto**
+
 Progettare e implementare un database relazionale che:
 
   - Modelli lo scenario aziendale con entità Product, Region, Sales e relative gerarchie
