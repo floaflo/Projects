@@ -17,9 +17,9 @@ Progettare e implementare un database relazionale che:
   - Garantisca integrità referenziale attraverso chiavi primarie e foreign keys
   - Minimizzi la ridondanza dei dati applicando principi di normalizzazione
   - Fornisca query analitiche per:
-      -Verificare l'univocità delle chiavi
-      -Generare report di vendita dettagliati
-      -Analizzare performance prodotti e categorie
-      -Calcolare fatturati per stato/anno
-      -Identificare prodotti invenduti
-      -Creare viste denormalizzate per reporting
+      - Verificare l'univocità delle chiavi
+      - Generare report di vendita dettagliati
+      - Analizzare performance prodotti e categorie
+      - Calcolare fatturati per stato/anno
+      - Identificare prodotti invenduti
+      - Creare viste denormalizzate per reporting
