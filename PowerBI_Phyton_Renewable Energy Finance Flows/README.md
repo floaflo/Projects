@@ -2,6 +2,8 @@
 
 Questo progetto è il Capstone del Corso in Data Analyst di Epicode.
 
+Un video-presentazione di 3 minuti del progetto è disponible qui: https://drive.google.com/file/d/18Kn9Kcc3mnJ3Rlx4w-M0WzbFEdFIwl6Q/view?usp=sharing 
+
 L’idea alla base di questo progetto nasce dal desiderio di applicare gli strumenti appresi durante il corso, in particolare Phyton e Power BI, alle tematiche relative il mio ambito di lavoro, ossia Clima e International Development. Ho quindi deciso di analizzare come la finanza internazionale si orienta verso progetti in energia rinnovabile in paesi emergenti e in via di sviluppo. 
 
 
