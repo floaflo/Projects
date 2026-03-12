@@ -8,19 +8,19 @@ https://github.com/owid/covid-19-data/tree/master/public/data
 1. Si richiede di **verificare le dimensioni del dataset e i relativi metadati**
 
 2. Si chiede di trovare, per ogni continente:
-  + il **numero di casi fin dall'inizio della pandemia**
-  + la **percentuale rispetto al totale mondiale** del numero di casi
+   + il **numero di casi fin dall'inizio della pandemia**
+   + la **percentuale rispetto al totale mondiale** del numero di casi
 
 3. Selezionare i **dati relativi all'Italia nel 2022** e, poiché i nuovi casi vengono registrati settimanalmente, filtrare via i giorni che non hanno
 misurazioni; quindi mostrare con dei grafici adeguati:
-  + l'evoluzione del casi totali dall'inizio alla fine dell'anno
-  + il numero di nuovi casi rispetto alla data
+   + l'evoluzione del casi totali dall'inizio alla fine dell'anno
+   + il numero di nuovi casi rispetto alla data
 
 4. Riguardo le nazioni di **Italia, Germania e Francia**:
-  + mostrare in un **boxplot la differenza tra queste nazioni** riguardo il numero di pazienti in terapia intensiva (Intensive Care Unit, ICU,
+    + mostrare in un **boxplot la differenza tra queste nazioni** riguardo il numero di pazienti in terapia intensiva (Intensive Care Unit, ICU,
 considerare quindi la colonna icu_patients) da maggio 2022 (incluso) ad aprile 2023 (incluso)
-+ scrivere un breve commento (una o due righe) riguardo che **conclusioni possiamo trarre** osservando il grafico risultante
+    + scrivere un breve commento (una o due righe) riguardo che **conclusioni possiamo trarre** osservando il grafico risultante
 
 5. Riguardo le nazioni di **Italia, Germania, Francia e Spagna in tutto il 2021**:
-   + mostrare, in maniera grafica oppure numerica, la **somma dei pazienti ospitalizzati** per ognuna (colonna hosp_patients)
-   + se ci sono **dati nulli**, con un breve commento scrivere se può essere possibile gestirli tramite sostituzione o meno
+    + mostrare, in maniera grafica oppure numerica, la **somma dei pazienti ospitalizzati** per ognuna (colonna hosp_patients)
+    + se ci sono **dati nulli**, con un breve commento scrivere se può essere possibile gestirli tramite sostituzione o meno
